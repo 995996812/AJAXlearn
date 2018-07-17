@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		function f1() {
+			// ajax接收xml信息
+			// js的dom技术处理xml
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState == 4) {
+					//xhr.responseXML 返回的是XML对象,其是XML根节点父节点对象
+					var xmldom = xhr.responseXML;
+					
+					var citys = xmldom.getElementsByTagName('city');
+					var s = "";
+					for (var i = 0; i < citys.length; i++) {
+						var name = citys[i].getElementsByTagName('name')[0].firstChild.nodeValue;
+						var temp = citys[i].getElementsByTagName('temp')[0].firstChild.nodeValue;
+						var wind = citys[i].getElementsByTagName('wind')[0].firstChild.nodeValue;
+
+						s += "城市: "+name+"  温度: "+temp+"  风向: "+wind+"<br />";
+					}
+					document.getElementById('result').innerHTML = s;
+				}
+			}
+			xhr.open('get', './07.xml');
+			xhr.send();
+		}
+	</script>
+</head>
+<body>
+	<h2>利用ajax+js实现对xml的接收和处理</h2>
+	<input type="button" value="点击" onclick="f1()">
+	<div id="result"></div>
+</body>
+</html>
