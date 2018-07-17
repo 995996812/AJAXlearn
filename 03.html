@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX接收服务器端返回的信息</title>
+	<script type="text/javascript">
+		/*
+		ajax对象成员
+		属性:
+			resoponseText: 以字符串形式接收服务器端返回的信息
+			readyState:
+				0: 刚创建对象
+				1: 已经调用open()方法
+				2: 已经调用send()方法
+				3: 正在返回数据
+				4: 请求完成,数据返回完整
+			onreadystatechange: 事件,当ajax状态readyState发生变化的时候要触发执行
+			为了获得较多状态,最好在创建ajax对象后设置
+		方法:
+			open() 创建新的请求
+			send() 把强求发送给服务器端
+		 */
+		function f1() {
+			// AJAX发送请求  并  接收服务器返回的信息
+			//1. 创建对象
+			var xhr = new XMLHttpRequest();
+			//4. 给ajax设置事件
+			xhr.onreadystatechange = function () {
+				console.log(xhr.readyState);
+				if (xhr.readyState == 4) {
+					console.log(xhr.responseText);
+					document.getElementById('result').innerHTML = xhr.responseText;
+				}
+			}
+			//2. 创建新的http请求
+			xhr.open('get', 'http://www.wphajax.com/03.php');
+			//3. 发送请求
+			xhr.send(null);
+
+		}
+	</script>
+</head>
+<body>
+	<h2>AJAX发起请求接收服务器端返回的信息</h2>
+	<input type="button" value="发送" onclick="f1()">
+	<div id="result"></div>
+</body>
+</html>

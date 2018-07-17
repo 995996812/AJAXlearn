@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function checkname() {
+			var name = document.getElementById('username').value;
+			//把用户名信息变为请求字符串
+			// post请求方式需要把参数变为请求信息给send
+			var info = "name="+name+"&age=10";
+			//1. 创建ajax对象
+			var xhr = new XMLHttpRequest();
+			//2. 监听回流状态
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					//返回信息处理
+					alert(xhr.responseText);
+				}
+			}
+			//3. 新建请求
+			xhr.open('post', 'http://www.wphajax.com/05.php');
+			//post方式传递数据是模拟form表单传递数据
+			//form表单的post格式数据是通过xml形式传递给服务器的
+			xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+			//4. 发送
+			xhr.send(info);
+		}
+	</script>
+</head>
+<body>
+	<h2>用户提交信息验证(post方式)</h2>
+
+	<p>用户名: <input type="text" id="username" onblur="checkname()"></p>
+	<p>手机号: <input type="text" id="userphone"></p>
+</body>
+</html>

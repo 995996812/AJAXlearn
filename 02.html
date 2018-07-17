@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AJAX发起服务端请求</title>
+	<script type="text/javascript">
+		//利用AJAX去请求02.php服务端页面
+		function f1() {
+			//1. 创建AJAX对象
+			var xhr = new XMLHttpRequest();
+			//2. 创建新的http请求, open(请求方式get/post,url请求地址)
+			xhr.open('get', 'http://www.wphajax.com/02.php');
+			//3.发送请求
+			//send(get-null/post-给服务器传递的信息)
+			xhr.send(null);
+		}
+
+	</script>
+</head>
+<body>
+	<h2>AJAX发起服务端请求</h2>
+	<input type="button" value="提交" onclick="f1()">
+</body>
+</html>

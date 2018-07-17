@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function checkname() {
+			var name = document.getElementById('username').value;
+			//对传递的特殊符号进行编码处理
+			name = encodeURIComponent(name);
+			//1. 创建ajax对象
+			var xhr = new XMLHttpRequest();
+			//2. 监听回流状态
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					//返回信息处理
+					alert(xhr.responseText);
+				}
+			}
+			//3. 新建请求
+			xhr.open('get', 'http://www.wphajax.com/04.php?username='+name+'&addr=beijing');
+			//4. 发送
+			xhr.send(null);
+		}
+	</script>
+</head>
+<body>
+	<h2>用户提交信息验证</h2>
+
+	<p>用户名: <input type="text" id="username" onblur="checkname()"></p>
+	<p>手机号: <input type="text" id="userphone"></p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				alert(xhr.responseText);
+			}
+		}
+		xhr.open('get', 'http://www.wphajax.com/06.php', true);// true异步请求  false 同步请求
+		xhr.send(null);
+	</script>
+</head>
+<body>
+	<img src="./img_01.png" alt="" width="749" height="424">
+</body>
+</html>
