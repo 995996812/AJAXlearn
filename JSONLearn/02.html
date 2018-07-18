@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			var fm = document.getElementsByTagName('form')[0];
+			fm.onsubmit = function(evt){
+				//1.收集表单信息
+				var username = document.getElementById('username').value;
+				var password = document.getElementById('password').value;
+				var email = document.getElementById('email').value;
+
+				//请求字符串
+				var info = "name="+username+"&pwd="+password+"&email="+email;
+				// info = encodeURIComponent(info);
+				//2.ajax负责把收集好的信息的传递给服务器端
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function() {
+					if(xhr.readyState == 4){
+						alert(xhr.responseText);
+					}
+				}
+				xhr.open('post', './02.php');
+				xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+				xhr.send(info);
+
+				//阻止浏览器默认动作
+				evt.preventDefault();
+				//return false;//也可以
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>无刷新方式收集表单信息并提交</h2>
+	<form>
+		<p>用户名: <input type="text" id="username"></p>
+		<p>密码: <input type="text" id="password"></p>
+		<p>邮箱: <input type="text" id="email"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+</body>
+</html>
