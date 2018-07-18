@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function() {
+			var  fm = document.getElementsByTagName('form')[0];
+			fm.onsubmit = function(evt) {
+				//收集表单信息
+				var fd = new FormData(fm);
+				//ajax传递数据
+				var xhr = new XMLHttpRequest();
+
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState == 4) {
+						alert(xhr.responseText);
+					}
+				}
+
+				xhr.open('post', './03.php');
+				xhr.send(fd);
+
+				evt.preventDefault();//阻止浏览器默认动作
+			}
+		}
+	</script>
+</head>
+<body>
+	<h2>无刷新方式上传附件</h2>
+	<form>
+		<p>用户名: <input type="text" name="username" id="username"></p>
+		<p>密码: <input type="text" name="password" id="password"></p>
+		<p>邮箱: <input type="text" name="email" id="email"></p>
+		<p>头像: <input type="file" name="userpic" id="userpic"></p>
+		<p><input type="submit" value="提交"></p>
+	</form>
+</body>
+</html>
