@@ -27,48 +27,29 @@ $per = 7; //每页显示的数据条数
 //3. 实例化分页类对象
 $page_obj = new Page($total,$per);
 //4. 制作sql语句,获取每页信息
-$sql3 = "select goods_name, goods_price, goods_number,goods_introduce from tab_goods ".$page_obj->limit;
+$sql3 = "select goods_name gnm, goods_price gpr, goods_number gnu,goods_introduce gtrod from tab_goods ".$page_obj->limit;
 
 $qry3 = mysqli_query($link,$sql3);
 
 // echo $qry3;
 //5. 获得页码列表
 $pagelist = $page_obj->fpage(array(3,4,5,6,7,8));
-echo <<<eof
-	<style type="text/css">
-		table{
-			width: 700px;
-			margin: auto;
-			border: 1px solid black;
-			border-collapse: collapse;
-		}
-		td{
-			border: 1px solid black;
-		}
-	</style>
-	<table>
-	<tr>
-		<td>序号</td>
-		<td>名称</td>
-		<td>价格</td>
-		<td>数量</td>
-		<td>简介</td>
-	</tr>
-eof;
+
 $p = isset($_GET['page'])?$_GET['page']:1;
 $num = ($p-1)*$per;
-if(!is_resource($qry3)){
+$info = array();
+if(!is_resource($qry3)){//判断是否有数据
 	while ($rst3 = mysqli_fetch_assoc($qry3)) {
-	echo "<tr>";
-	echo "<td>".++$num."</td>";
-	echo "<td>".$rst3['goods_name']."</td>";
-	echo "<td>".$rst3['goods_price']."</td>";
-	echo "<td>".$rst3['goods_number']."</td>";
-	echo "<td>".$rst3['goods_introduce']."</td>";
-	echo "</tr>";
+		//$rst3代表每条记录的一堆数组信息
+		//要把全部的$rst3整合到一起,变为一个二维数组
+		$rst3['x'] = ++$num;//设置序号
+		$info[] = $rst3;
 	}
-	echo "<tr><td colspan='5'>$pagelist</td></tr>";
-	echo "<table />";
+	$info[] = $pagelist;
+	// print_r($info);
+	echo json_encode($info);
+	//需要把全部的信息整合一下
+	//json_encode()只能使用一次
 }else{
 	echo "没有数据";
 };

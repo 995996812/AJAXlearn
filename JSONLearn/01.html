@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function get_weather() {
+			//ajax去请求后台信息
+			//js做后期处理
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4) {
+					// alert(xhr.responseText);
+					eval("var info="+xhr.responseText);
+					console.log(info);
+					console.log(info.name);
+					console.log(info.age);
+					console.log(info.city);
+				}
+			}
+
+			xhr.open('get', './01.php');
+
+			xhr.send(null);
+		}
+	</script>
+</head>
+<body>
+	<h2>接收处理json信息</h2>
+	<input type="button" value="点击" onclick="get_weather()">
+</body>
+</html>
