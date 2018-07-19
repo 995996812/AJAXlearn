@@ -22,7 +22,10 @@
 						//最大的id值 赋予 maxID
 						maxID = jn_info[i].id;
 					}
-					document.getElementById('show_msg').innerHTML += s;
+					var showmsg = document.getElementById('show_msg');
+					showmsg.innerHTML += s;
+					showmsg.scrollTop = showmsg.scrollHeight;
+
 				}
 			}
 			xhr.open('get', './data.php?maxID='+maxID);
