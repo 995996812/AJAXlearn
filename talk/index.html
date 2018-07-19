@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./talk.css">
+	<title>Document</title>
+	<script>
+		var maxID = 0;
+		function showmessage () {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4) {
+					// alert(xhr.responseText);
+					eval("var jn_info="+xhr.responseText);
+					var s = "";
+					for (var i = 0; i < jn_info.length; i++) {
+						s += "<p style='color:"+jn_info[i].color+"'>";
+						s += jn_info[i].sender+"&nbsp;对&nbsp;";
+						s += jn_info[i].receiver+"&nbsp;";
+						s += jn_info[i].biaoqing+"&nbsp;说: "+jn_info[i].msg+"("+jn_info[i].add_time;
+						s += ")</p>";
+						//最大的id值 赋予 maxID
+						maxID = jn_info[i].id;
+					}
+					document.getElementById('show_msg').innerHTML += s;
+				}
+			}
+			xhr.open('get', './data.php?maxID='+maxID);
+			xhr.send(null); 
+		}
+		window.onload = function(){
+			// showmessage();
+			setInterval("showmessage()", 2000);//轮询  推技术
+		}
+	</script>
+</head>
+<body>
+	<div class="top" id="top">
+		<h2>聊天室</h2>
+		<hr />
+		<div id="show_msg">
+			<p style="color:red">聊天室公高:欢迎恶魔来到聊天室(22:05:35)</p>
+			<p>恶魔&nbsp;对&nbsp;大家&nbsp;微笑&nbsp;说: 对啊</p>
+			<p>恶魔&nbsp;对&nbsp;大家&nbsp;微笑&nbsp;说: 我来了</p>
+			<p style="color:red">聊天室公高:欢迎天使来到聊天室(22:05:35)</p>
+			<p>天使&nbsp;对&nbsp;大家&nbsp;微笑&nbsp;说: 你来了</p>
+		</div>
+	</div>
+	<hr />
+	<div class="send" id="send">
+		<div id="control">
+			颜色:
+			<select name="color">
+				<option value="">请选择</option>
+				<option value="">红色</option>
+			</select>
+			表情:
+			<select name="biaoqing">
+				<option value="">请选择</option>
+				<option value="">微笑</option>
+				<option value="">沮丧</option>
+				<option value="">含情脉脉</option>
+				<option value="">痴痴的</option>
+			</select>
+			聊天对象:
+			<select name="chatob">
+				<option value="">所有人</option>
+				<option value="">tom</option>
+				<option value="">mary</option>
+			</select>
+		</div>
+		<div class="talk_msg" id="talk_msg">
+			<textarea class="input_t" name="" id="" cols="30" rows="10"></textarea>	
+			<input type="button" value="发送" onclick="sendmessage()">
+		</div>
+	</div>
+</body>
+</html>
