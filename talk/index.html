@@ -48,31 +48,65 @@
 	</div>
 	<hr />
 	<div class="send" id="send">
-		<div id="control">
-			颜色:
-			<select name="color">
-				<option value="">请选择</option>
-				<option value="">红色</option>
-			</select>
-			表情:
-			<select name="biaoqing">
-				<option value="">请选择</option>
-				<option value="">微笑</option>
-				<option value="">沮丧</option>
-				<option value="">含情脉脉</option>
-				<option value="">痴痴的</option>
-			</select>
-			聊天对象:
-			<select name="chatob">
-				<option value="">所有人</option>
-				<option value="">tom</option>
-				<option value="">mary</option>
-			</select>
-		</div>
-		<div class="talk_msg" id="talk_msg">
-			<textarea class="input_t" name="" id="" cols="30" rows="10"></textarea>	
-			<input type="button" value="发送" onclick="sendmessage()">
-		</div>
+		<form>
+			<div id="control">
+				颜色:
+				<select name="color" id="color">
+					<option value="black">请选择</option>
+					<option value="red">红色</option>
+					<option value="green">绿色</option>
+					<option value="blue">蓝色</option>
+				</select>
+				表情:
+				<select name="biaoqing" id="biaoqing">
+					<option value="">请选择</option>
+					<option value="微笑地">微笑</option>
+					<option value="沮丧地">沮丧</option>
+					<option value="含情脉脉地">含情脉脉</option>
+					<option value="痴痴的地">痴痴的</option>
+				</select>
+				聊天对象:
+				<select name="chatob" id="chatob">
+					<option value="">请选择</option>
+					<option value="所有人">所有人</option>
+					<option value="tom">tom</option>
+					<option value="mary">mary</option>
+				</select>
+				<br />
+				<textarea class="input_t" name="msg_text" id="msg_text" cols="30" rows="10"></textarea>	
+				<input type="button" value="发送" onclick="sendmessage()">
+				<span id="sendresult"></span>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
+
+<script type="text/javascript">
+	function sendmessage() {
+		var fm = document.getElementsByTagName('form')[0];
+		var fd = new FormData(fm);
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4) {
+				// alert(xhr.responseText);
+				document.getElementById('sendresult').innerHTML = xhr.responseText;
+				//表单域信息归位
+				document.getElementsByTagName('select')[0].value = ""; //颜色
+				document.getElementsByTagName('select')[1].value = ""; //表情
+				document.getElementsByTagName('select')[2].value = ""; //聊天对象
+
+				document.getElementsByTagName('textarea')[0].value = ""; //聊天框
+				
+				setTimeout('hideSendResult()', 3000);
+			}
+		}
+		xhr.open('post', './send.php');
+		xhr.send(fd);
+	}
+
+	function hideSendResult() {
+		document.getElementById('sendresult').innerHTML = "";
+	}
+</script>
+
