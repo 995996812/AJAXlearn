@@ -25,15 +25,18 @@
 					var showmsg = document.getElementById('show_msg');
 					showmsg.innerHTML += s;
 					showmsg.scrollTop = showmsg.scrollHeight;
-
 				}
 			}
 			xhr.open('get', './data.php?maxID='+maxID);
 			xhr.send(null); 
 		}
+
 		window.onload = function(){
-			// showmessage();
-			setInterval("showmessage()", 2000);//轮询  推技术
+			timer = setInterval("showmessage()", 2000);//轮询  推技术
+		}
+		function viewWillScroll() {
+			//停止轮询
+			clearInterval(timer);
 		}
 	</script>
 </head>
@@ -41,7 +44,7 @@
 	<div class="top" id="top">
 		<h2>聊天室</h2>
 		<hr />
-		<div id="show_msg" class="show_msg">
+		<div id="show_msg" class="show_msg" onscroll="viewWillScroll()">
 			<p style="color:red">聊天室公高:欢迎恶魔来到聊天室(22:05:35)</p>
 			<p>恶魔&nbsp;对&nbsp;大家&nbsp;微笑&nbsp;说: 对啊</p>
 			<p>恶魔&nbsp;对&nbsp;大家&nbsp;微笑&nbsp;说: 我来了</p>
@@ -102,6 +105,8 @@
 				document.getElementsByTagName('textarea')[0].value = ""; //聊天框
 				
 				setTimeout('hideSendResult()', 3000);
+				//开启轮询
+				timer = setInterval("showmessage()", 2000);
 			}
 		}
 		xhr.open('post', './send.php');
