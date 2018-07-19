@@ -4,3 +4,8 @@
 	font-size: 20px;
 	font-size: 20px;
 }
+
+.show_msg{
+	height: 400px;
+	overflow: auto;
+}
