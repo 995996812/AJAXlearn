@@ -12,12 +12,21 @@
 				//ajax传递数据
 				var xhr = new XMLHttpRequest();
 
+				//给ajax设置上传附件事件
+				xhr.upload.onprogress = function(evt){
+					console.log(evt);
+					var loaded = evt.loaded; //已经上传的大小
+					var total = evt.total;//文件总大小
+					var per = Math.floor((loaded/total)*100)+"%";//已经上传的百分比
+					document.getElementById('son').innerHTML = per;
+					document.getElementById('son').style.width = per;
+				}
+
 				xhr.onreadystatechange = function() {
 					if (xhr.readyState == 4) {
 						alert(xhr.responseText);
 					}
 				}
-
 				xhr.open('post', './03.php');
 				xhr.send(fd);
 
@@ -25,6 +34,19 @@
 			}
 		}
 	</script>
+
+	<style type="text/css">
+		#pat {
+			width: 440px;
+			height: 45px;
+			border: 5px solid blue;
+		}
+		#son {
+			width: 0;
+			height: 100%;
+			background-color: lightblue;
+		}
+	</style>
 </head>
 <body>
 	<h2>无刷新方式上传附件</h2>
@@ -32,6 +54,7 @@
 		<p>用户名: <input type="text" name="username" id="username"></p>
 		<p>密码: <input type="text" name="password" id="password"></p>
 		<p>邮箱: <input type="text" name="email" id="email"></p>
+		<div id="pat"><div id="son"></div></div>
 		<p>头像: <input type="file" name="userpic" id="userpic"></p>
 		<p><input type="submit" value="提交"></p>
 	</form>
