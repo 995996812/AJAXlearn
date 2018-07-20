@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气预报显示</title>
+	<script type="text/javascript">
+		function f1() {
+			var xhr = new XMLHttpRequest();
+			var s ="";
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4) {
+					eval("var jn_info="+xhr.responseText);
+					var s = " 城市: "+jn_info.weatherinfo.city;
+					s += " 风向: "+jn_info.weatherinfo.WD;
+					s += " 湿度: "+jn_info.weatherinfo.SD;
+					document.getElementById('result').innerHTML = s;
+				}
+			}
+			// http://www.weather.com.cn/data/sk/101010100.html
+			xhr.open('get', './08.php');
+			xhr.send(null);
+		}
+	</script>
+</head>
+<body>
+	<h2>天气预报显示</h2>
+	<input type="button" value="获取天气" onclick="f1()"/>
+	<div id="result"></div>
+</body>
+</html>
