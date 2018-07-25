@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			// 全选
+			$('.hby').attr('checked', true);
+		}
+		function f2() {
+			// 全不选
+			$('.hby').attr('checked', false);
+		}
+		function f3() {
+			// 反选
+			// for (var i = 0; i < $('.hby').length; i++) {
+			// 	var flag = $('.hby:eq('+i+')').attr('checked');
+			// 	// console.log($('.hby:eq('+i+')').attr('checked'));
+			// 	$('.hby:eq('+i+')').attr('checked',!flag);
+			// }
+			console.log(2222);
+			$('.hby').each(function(index, el) {
+				//js方法
+				this.checked=!this.checked;
+			});
+		}
+	</script>
+</head>
+<body>
+	<h2>复选框全选、全不选、反选操作</h2>
+	<input type="checkbox" class="hby" name="hobby" value="1">篮球 &nbsp
+	<input type="checkbox" class="hby" name="hobby" value="2">足球 &nbsp
+	<input type="checkbox" class="hby" name="hobby" value="3">排球 &nbsp
+
+	<br>
+
+	<input type="button" value="全选" onclick="f1()">
+	<input type="button" value="全不选" onclick="f2()">
+	<input type="button" value="反选" onclick="f3()" >
+</body>
+</html>

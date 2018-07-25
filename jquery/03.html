@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			//1. 获取属性信息
+			console.log($("#username").attr('value'));
+			console.log($("#username").attr('address'));
+			
+		}
+		function f2() {
+			//2. 修改属性信息 注: 如果想修改id 需最后修改,否则会导致id找不到
+			$('#username').attr('value', 'hell');
+			$('#username').attr('address', 'shanghai');
+		}
+		function f3() {
+			//3. 批量修改属性
+			// $().attr(json对象)
+			$('#username').attr({
+				'address': '杭州',
+				value: 'wanghong'
+			});
+		}
+		function f4() {
+			// 函数返回值修改属性值
+			$('#username').attr({
+				'address': '成都',
+				value: function() {
+					return 10+30;
+				}
+			});
+		}
+		function f5() {
+			//删除属性  注:type不让删除    id最好不好删除
+			$('#username').removeAttr('address');
+		}
+	</script>
+</head>
+<body>
+	<h2>属性操作</h2>
+	<input type="text" class="apple" id="username" name="username" value="tom" address="bj"/>
+	<input type="button" value="获取属性信息" onclick="f1()" />
+	<input type="button" value="修改属性" onclick="f2()" />
+	<input type="button" value="批量修改属性" onclick="f3()" />
+	<input type="button" value="函数返回值修改属性值" onclick="f4()" />
+	<input type="button" value="删除属性" onclick="f5()" />
+</body>
+</html>

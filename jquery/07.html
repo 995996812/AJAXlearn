@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			//获取选中情况
+			console.log($('.sx:checked').val());
+		}
+		function f2() {
+			//设置选中情况
+			$('.sx').val(['女']);
+		}
+	</script>
+</head>
+<body>
+	<h2>单选框快捷操作</h2>
+	性别:
+	<input type="radio" class="sx" name="sex" value="男">男 &nbsp
+	<input type="radio" class="sx" name="sex" value="女">女 &nbsp
+	<input type="radio" class="sx" name="sex" value="保密">保密 &nbsp
+
+	<br>
+
+	<input type="button" value="获取" onclick="f1()">
+	<input type="button" value="设置" onclick="f2()">
+</body>
+</html>

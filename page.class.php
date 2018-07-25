@@ -130,7 +130,6 @@ class Page
 			$html.="&nbsp;&nbsp;<a href='javascript:showpage(\"{$this->uri}&page=".($this->page+1)."\")'>{$this->config["next"]}</a>&nbsp;&nbsp;";
 		}
 		return $html;
-		
 	}
 	//尾页
 	private function last(){

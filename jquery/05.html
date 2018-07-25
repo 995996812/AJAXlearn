@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			//获得复选框的选中情况
+			// console.log($('.hby:checked'));
+			//遍历选中的项目,获取其value属性值
+			for (var i = 0; i < $('.hby:checked').length; i++) {
+				console.log($('.hby:checked:eq('+i+')').val());
+			}
+		}
+		function f2() {
+			//设置复选框的选中
+			//设置单独复选框选中  $(复选框).attr('checked',true);
+			//设置多个复选框选中  $(全部复选框).val([value值元素,value值元素]);
+			$('.hby').val([2,4]);
+		}
+	</script>
+</head>
+<body>
+	<h2>复选框快捷操作</h2>
+	<input type="checkbox" class="hby" name="hobby" value="1" />1 &nbsp
+	<input type="checkbox" class="hby" name="hobby" value="2" />2 &nbsp
+	<input type="checkbox" class="hby" name="hobby" value="3" />3 &nbsp
+	<input type="checkbox" class="hby" name="hobby" value="4" />4 &nbsp
+	<input type="checkbox" class="hby" name="hobby" value="5" />5 &nbsp
+	<br>
+	<input type="button" value="获取" onclick="f1()">
+	<input type="button" value="设置" onclick="f2()">
+
+</body>
+</html>

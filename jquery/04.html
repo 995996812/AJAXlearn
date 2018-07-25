@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			//追加属性值
+			$('div').addClass('pear');
+			$('div').addClass('orange');
+		}
+		function f2() {
+			//删除属性值
+			$('div').removeClass('orange');
+		}
+		function f3() {
+			//开关属性值(有就删除,没有就添加)
+			$('div').toggleClass('hear');
+		}
+
+		function f4() {
+			console.log($('div').css('border'));
+		}
+	</script>
+	<style type="text/css">
+		.pear{
+			width: 200px;
+			height: 300px;
+			border: 1px solid black;
+		}
+		.orange{
+			background-color: orange;
+		}
+		.hear{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="pear">Hello word</div>
+
+	<input type="button" value="追加属性值" onclick="f1()">
+	<input type="button" value="删除属性值" onclick="f2()">
+	<input type="button" value="开关属性值" onclick="f3()">
+
+	<input type="button" value="获取css样式" onclick="f4()">
+</body>
+</html>
