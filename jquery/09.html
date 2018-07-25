@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function amplification() {
+			//获得图片原宽度,高度
+			var original_w = $('img').width();
+			var original_h = $('img').height();
+			//放大
+			var new_w = original_w + 5;
+			var new_h = (new_w * original_h) / original_w;
+			//重新复制
+			$('img').width(new_w);
+			$('img').height(new_h);
+		}
+		function narrow() {
+			//获得图片原宽度,高度
+			var original_w = $('img').width();
+			var original_h = $('img').height();
+			//放大
+			var new_w = original_w - 5;
+			var new_h = (new_w * original_h) / original_w;
+			//重新复制
+			$('img').width(new_w);
+			$('img').height(new_h);
+		}
+	</script>
+</head>
+<body>
+	<h2>图片放大缩小效果</h2>
+	<!-- 360*225 -->
+	<img src="timg.jpg" alt="" width="360" height="225">
+	<br>
+	<input type="button" value="放大" onclick="amplification()">
+	<input type="button" value="缩小" onclick="narrow()">
+</body>
+</html>
