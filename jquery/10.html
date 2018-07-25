@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			$('tr:first').css('background-color', 'yellow');
+			// $('tr:odd:not(:first)').css('background-color', 'lightblue');
+			$('tr:gt(0):odd').css('background-color', 'lightgreen');
+		}
+	</script>
+	<style type="text/css">
+		table{
+			width: 700px;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		td{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h2>表格隔行换色效果</h2>
+	<table>
+		<tr>
+			<td>序号</td>
+			<td>名称</td>
+			<td>价格</td>
+			<td>数量</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>HTC</td>
+			<td>3200</td>
+			<td>22</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Apple</td>
+			<td>9800</td>
+			<td>33</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Nokia</td>
+			<td>2300</td>
+			<td>44</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Samsung</td>
+			<td>3800</td>
+			<td>55</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>HeiMei</td>
+			<td>5000</td>
+			<td>66</td>
+		</tr>
+	</table>
+</body>
+</html>
