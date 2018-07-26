@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('div').click(function(event) {
+				console.log('11111111')
+			});
+			// $('li').each(function(index, el) {
+			// 	//this 关键字分别点每个li的dom对象
+			// 	//jquery使用时,this都代表dom对象
+			// 	// this.innerHTML = "bbbbbbb";
+			// });
+			$('div').mouseenter(function(event) {
+
+				// this.style.backgroundColor = 'lightgreen';
+				//$(this使得this的dom对象变为jquery对象)
+				$(this).css('background-color', 'lightgreen');
+			});
+		})
+		function f1() {
+			$('div').click();//使div的点击事件执行
+			$('div').mouseover();//使div的滑入事件执行
+		}
+	</script>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 150px;
+			background-color: lightblue;
+		}
+	</style>
+</head>
+<body>
+	<h2>jquery简单事件操作</h2>
+	<div></div>
+	<ul>
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+	</ul>
+
+	<input type="button" value="间接操作" onclick="f1()">
+</body>
+</html>

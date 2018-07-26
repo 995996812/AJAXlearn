@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		// window.onload = function () {
+		// 	alert("123"); //图片和弹出框在4秒后一起看到
+		// }
+		// 
+		//jquery加载事件
+		// $(function() {
+		// 	alert("123"); //先看到弹出框,4秒之后才看到图片
+		// })
+		//jquery的加载事件是对DOMContentLoaded/onload的封装
+		document.addEventListener("DOMContentLoaded", function() {
+			alert("hello");//先看到hello弹出框,4秒之后看到图片
+		})
+	</script>
+</head>
+<body>
+	<h2>加载事件执行时机</h2>
+	<img src="./14.php" alt="">
+</body>
+</html>

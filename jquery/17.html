@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			//主动替换 replaceAll
+			// $('#shu li:eq(2)').replaceAll('#zimu li:eq(2)');//333 替换 ccc   ccc标签会消失
+			//被动替换 replaceWith()
+			$('#shu li:first').replaceWith($('#zimu li:first'));//aaa 替换 111   111会消失
+		}
+	</script>
+</head>
+<body>
+	<h2>节点替换</h2>
+
+	<ul id="shu">
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+	</ul>
+	<ul id="zimu">
+		<li>aaa</li>
+		<li>bbb</li>
+		<li>ccc</li>
+	</ul>
+
+	<input type="button" value="替换" onclick="f1()">
+</body>
+</html>

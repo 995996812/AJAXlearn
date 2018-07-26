@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		//父子关系追加
+		function f1() {
+			//主动追加
+			//append() 后置追加 prpend() 前置追加
+			$('#shu').append('<li>444</li>');
+			//已有节点追加 节点发生物理位置移动
+			$('#shu').prepend($('#ccc'));
+		}
+		function f2(){
+			//被动追加
+			//appendTo 后置追加  prependTo 前置追加
+			$("<li>444</li>").prependTo('#shu');
+			//原理: $('html标签')---创建节点---->createElement等方法
+			//已有节点追加
+			$('#zimu li:eq(1)').appendTo('#shu');
+		}
+		//兄弟关系追加
+		function f3() {
+			// 主动追加
+			$('#shu li:last').after('<li>444</li>');//后置追加
+			$('#shu li:last').before('<li>555</li>');//5会追加在4的前面
+			//已经节点追加
+			$('#shu li:last').after($('#zimu li:first'));
+		}
+		function f4() {
+			// 主动追加
+			// insertAfter 后置追加  insertBefore前置追加
+		}
+	</script>
+</head>
+<body>
+	<h2>节点追加</h2>
+	<ul id="shu">
+		<li>111</li>
+		<li>222</li>
+		<li>333</li>
+	</ul>
+
+	<ul id="zimu">
+		<li>aaa</li>
+		<li>bbb</li>
+		<li id="ccc">cccc</li>
+	</ul>
+	<input type="button" value="追加" onclick="f3()">
+</body>
+</html>
