@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		//1. $.each(对/数组)  遍历对象
+		var cat = {name:'kitty',age:5,climb:function () {
+			console.log('在吃饭');
+		}}
+
+		$.each(cat,function(k, v) {
+			console.log(k+'--------'+v);
+		});
+		//2. 遍历数组
+		var array = ['red','blue','green'];
+		$.each(array,function(index, el) {
+			console.log(el);
+		});
+		window.onload = function() {
+		//3. 遍历jquery对象
+		//w 代表对象下标索引值
+		//f 代表具体的每个dom对象
+			$('li').each(function(w, f) {
+				console.log(w+'-----'+f);
+				//this代表遍历出来的每个dom对象
+				if (w%2==0) {
+					this.style.color = 'blue';
+				}else{
+					f.style.color = 'green';
+				}
+			});
+		}
+
+	</script>
+	<style type="text/css">
+	</style>
+</head>
+<body>
+	<h2>each遍历方法</h2>
+	<br>
+	<ul>
+		<li>床前明月光</li>
+		<li>疑是地上霜</li>
+		<li>举头望明月</li>
+		<li>低头思故乡</li>
+	</ul>
+</body>
+</html>
