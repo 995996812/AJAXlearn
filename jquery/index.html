@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 		var xmldom = null;//用于存储请求下来的xmldom信息
 		var oldPid = null;//用于记录上次选择的pid
-
+		var oldRid = null;//用于记录上次选择的pid
 		$(function() {
 			//页面加载完毕.获取省份信息
 			$.ajax({
@@ -33,6 +33,14 @@
 			// 获取选择省份的value的值
 			var pid = $('#province').val();
 
+			if (pid != oldPid) {
+				$('#city').empty();
+				$('#city').append("<option value='0'>-请选择-</option>");
+				$('#region').empty();
+				$('#region').append("<option value='0'>-请选择-</option>");
+			}
+			oldPid = pid;
+
 			// 省份只保留前两位
 			var two_pid = pid.substring(0, 2);
 			//清空旧的城市信息
@@ -46,27 +54,28 @@
 				var cityID = $(this).attr('CityID');
 				$('#city').append("<option value="+cityID+">"+city+"</option>");
 			});
-			if (pid != oldPid) {
-				console.log($('#city'));
-			}
-			oldPid = pid;
 		}
 
 		function showRegion() {
 			//获取地区的value值
 			var rid = $("#city").val();
+			if (rid != oldRid) {
+				$('#region').empty();
+				$('#region').append("<option value='0'>-请选择-</option>");
+			}
+			oldRid = rid;
 			// 只保留前四位
 			var four_rid = rid.substring(0, 4);
 			//清空旧的地区信息
 			if ($('#region').length > 1) {
 				$('#region').empty();
 			}
-			
+
 			//遍历添加
 			$(xmldom).find("Piecearea[PieceareaID^="+four_rid+"]").each(function(index, el) {
 				var region = $(this).attr('Piecearea');
 				var regionID = $(this).attr('PieceareaID');
-				$('#region').append("<option value="+regionID+">"+region+"</option>")
+				$('#region').append("<option value="+regionID+">"+region+"</option>");
 			});
 		}
 
