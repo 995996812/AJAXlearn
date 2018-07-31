@@ -11,6 +11,12 @@
 			//被动替换 replaceWith()
 			$('#shu li:first').replaceWith($('#zimu li:first'));//aaa 替换 111   111会消失
 		}
+
+		$(document).ready(function() {
+			$('#shu li').click(function(event) {
+				alert($(this).html());
+			});;
+		});
 	</script>
 </head>
 <body>

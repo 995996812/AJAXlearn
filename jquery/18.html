@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var eventJson = {
+				click:function() {
+					console.log('div click method');
+				},
+				mouseover:function() {
+					console.log('div mouseover method');
+				},
+				mouseout:function() {
+					console.log('div mouseout method')
+				}
+			}
+			$('div').bind(eventJson);
+		});
+	</script>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 150px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function showDiv() {
+			$('div').show(4000,function() {
+				//动画执行完毕之后的回调
+				alert("显示完成")
+			});
+		}
+		function hiddenDiv() {
+			$('div').hide(4000,function() {
+				//动画执行完毕之后的回调
+				alert("隐藏完成");
+			});
+		}
+	</script>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 150px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<h2>动画效果</h2>
+	<div></div>
+	<br>
+	<input type="button" value="显示" onclick="showDiv()">
+	<input type="button" value="隐藏" onclick="hiddenDiv()">
+</body>
+</html>

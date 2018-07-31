@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function add() {
+			// body...
+			$('ul').append('<li>ddd</li>');
+		}
+		//取消事件委派
+		function cancel() {
+			$('#ddd').off('click','li');
+		}
+
+		$(document).ready(function() {
+			//给li设置事件
+			// $('li').click(function(event) {
+			// 	alert($(this).html());
+			// });
+			// $('li').bind('click', function(event) {
+			// 	alert($(this).html());
+			// });
+			//bind和直接添加的不会对后续添加的标签产生影响
+			//on是事件委派  会对后续添加的标签产生影响
+			//
+			$('#ddd').on('click', 'li',function(event) {
+				
+				alert($(this).html());
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>jquery事件委派</h2>
+	<ul id="ddd">
+		<li>aaa</li>
+		<li>bbb</li>
+		<li>ccc</li>
+	</ul>
+
+	<input type="button" value="添加" onclick="add()">
+	<input type="button" value="取消事件委派" onclick="cancel()">
+</body>
+</html>
