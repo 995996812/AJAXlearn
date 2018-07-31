@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			//页面加载完毕.获取省份信息
+			$.ajax({
+				url: './ChinaArea.xml',
+				type:'get',
+				dataType:'xml',
+				success:function(msg) {
+					// alert(msg);msg是一个XMLDocument对象
+					// jquery处理html的方式和xml的方式是一样的
+					// $msg 是把msg变为jquery对象
+					// find()方法是从chinaArea.xml中寻找province标签  如果直接写$('province')是不对的,他会直接从当前页面寻找标签而不是在对应的xml的文件中去寻找
+					$(msg).find('province').each(function(index, el) {
+						var province = $(this).attr('province');
+						var provinceID = $(this).attr('provinceID');
+						$('#province').append("<option value='"+provinceID+"'>"+province+"</option>");
+					});
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<h2>地区三级联动</h2>
+	省份: 
+
+	<select name="" id="province">
+		<option value="0">-请选择-</option>
+	</select>&nbsp;&nbsp;
+	城市: 
+	<select name="" id="">
+		<option value="0">-请选择-</option>
+	</select>&nbsp;&nbsp;
+	地区: 
+	<select name="" id="">
+		<option value="0">-请选择-</option>
+	</select>&nbsp;&nbsp;
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script type="text/javascript">
+		function f1() {
+			// post请求同理
+			$.get('./ajax.php','name=hell&age=10',function(msg) {
+				alert(msg.name);
+			},'json');
+		}
+
+		function f2() {
+			// 推荐使用方式 ajax方式去请求
+			$.ajax({
+				url: './ajax.php',
+				type: 'post',
+				dataType: 'json',
+				data: {name: 'uzi',age: 10},
+				success:function(msg,msg2,xhr) {//msg代表服务器返回的信息
+					console.log(msg);
+				}
+			});
+
+		}
+	</script>
+</head>
+<body>
+	<h2>ajax请求</h2>
+	<input type="button" value="发送请求" onclick="f1()">
+	<input type="button" value="ajax发送请求" onclick="f2()">
+</body>
+</html>

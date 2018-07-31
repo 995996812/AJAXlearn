@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<area Country="China">
+    <province ID="1" provinceID="110000" province="北京市">
+        <City CityID="110100" City="市辖区">
+          <Piecearea PieceareaID="110101" Piecearea="东城区" />
+          <Piecearea PieceareaID="110102" Piecearea="西城区" />
+          <Piecearea PieceareaID="110103" Piecearea="崇文区" />
+          <Piecearea PieceareaID="110104" Piecearea="宣武区" />
+          <Piecearea PieceareaID="110105" Piecearea="朝阳区" />
+          <Piecearea PieceareaID="110106" Piecearea="丰台区" />
+          <Piecearea PieceareaID="110107" Piecearea="石景山区" />
+          <Piecearea PieceareaID="110108" Piecearea="海淀区" />
+          <Piecearea PieceareaID="110109" Piecearea="门头沟区" />
+          <Piecearea PieceareaID="110111" Piecearea="房山区" />
+          <Piecearea PieceareaID="110112" Piecearea="通州区" />
+          <Piecearea PieceareaID="110113" Piecearea="顺义区" />
+          <Piecearea PieceareaID="110114" Piecearea="昌平区" />
+          <Piecearea PieceareaID="110115" Piecearea="大兴区" />
+          <Piecearea PieceareaID="110116" Piecearea="怀柔区" />
+          <Piecearea PieceareaID="110117" Piecearea="平谷区" />
+        </City>
+    </province>
+    <province ID="2" provinceID="120000" province="河南省">
+        <City CityID="120100" City="漯河市">
+          <Piecearea PieceareaID="120101" Piecearea="召陵区" />
+          <Piecearea PieceareaID="120102" Piecearea="源汇区" />
+          <Piecearea PieceareaID="120103" Piecearea="郾城区" />
+          <Piecearea PieceareaID="120104" Piecearea="开发区" />
+          <Piecearea PieceareaID="120105" Piecearea="舞阳县" />
+          <Piecearea PieceareaID="120106" Piecearea="西平县" />
+        </City>
+  </province>
+</area>
