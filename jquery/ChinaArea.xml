@@ -29,5 +29,13 @@
           <Piecearea PieceareaID="120105" Piecearea="舞阳县" />
           <Piecearea PieceareaID="120106" Piecearea="西平县" />
         </City>
+        <City CityID="120200" City="平顶山市">
+          <Piecearea PieceareaID="120201" Piecearea="新华区" />
+          <Piecearea PieceareaID="120202" Piecearea="卫东区" />
+          <Piecearea PieceareaID="120203" Piecearea="湛河区" />
+          <Piecearea PieceareaID="120204" Piecearea="石龙区" />
+          <Piecearea PieceareaID="120205" Piecearea="鲁山县" />
+          <Piecearea PieceareaID="120206" Piecearea="舞钢市" />
+        </City>
   </province>
 </area>

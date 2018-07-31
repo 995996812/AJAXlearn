@@ -5,6 +5,9 @@
 	<title>Document</title>
 	<script type="text/javascript" src="jQuery.js"></script>
 	<script type="text/javascript">
+		var xmldom = null;//用于存储请求下来的xmldom信息
+		var oldPid = null;//用于记录上次选择的pid
+
 		$(function() {
 			//页面加载完毕.获取省份信息
 			$.ajax({
@@ -16,6 +19,7 @@
 					// jquery处理html的方式和xml的方式是一样的
 					// $msg 是把msg变为jquery对象
 					// find()方法是从chinaArea.xml中寻找province标签  如果直接写$('province')是不对的,他会直接从当前页面寻找标签而不是在对应的xml的文件中去寻找
+					xmldom = msg;
 					$(msg).find('province').each(function(index, el) {
 						var province = $(this).attr('province');
 						var provinceID = $(this).attr('provinceID');
@@ -24,21 +28,63 @@
 				}
 			});
 		});
+		//省份信息改变时调用的方法
+		function showcity() {
+			// 获取选择省份的value的值
+			var pid = $('#province').val();
+
+			// 省份只保留前两位
+			var two_pid = pid.substring(0, 2);
+			//清空旧的城市信息
+			if ($('#city').length > 1) {
+				$('#city').empty();
+			}
+
+			//获得xml地区信息city标签,条件ID开始内容是two_pid
+			$(xmldom).find("City[CityID^="+two_pid+"]").each(function(index, el) {
+				var city = $(this).attr('City');
+				var cityID = $(this).attr('CityID');
+				$('#city').append("<option value="+cityID+">"+city+"</option>");
+			});
+			if (pid != oldPid) {
+				console.log($('#city'));
+			}
+			oldPid = pid;
+		}
+
+		function showRegion() {
+			//获取地区的value值
+			var rid = $("#city").val();
+			// 只保留前四位
+			var four_rid = rid.substring(0, 4);
+			//清空旧的地区信息
+			if ($('#region').length > 1) {
+				$('#region').empty();
+			}
+			
+			//遍历添加
+			$(xmldom).find("Piecearea[PieceareaID^="+four_rid+"]").each(function(index, el) {
+				var region = $(this).attr('Piecearea');
+				var regionID = $(this).attr('PieceareaID');
+				$('#region').append("<option value="+regionID+">"+region+"</option>")
+			});
+		}
+
 	</script>
 </head>
 <body>
+
 	<h2>地区三级联动</h2>
 	省份: 
-
-	<select name="" id="province">
+	<select name="" id="province" onchange="showcity()">
 		<option value="0">-请选择-</option>
 	</select>&nbsp;&nbsp;
 	城市: 
-	<select name="" id="">
+	<select name="" id="city" onchange="showRegion()">
 		<option value="0">-请选择-</option>
 	</select>&nbsp;&nbsp;
 	地区: 
-	<select name="" id="">
+	<select name="" id="region">
 		<option value="0">-请选择-</option>
 	</select>&nbsp;&nbsp;
 </body>
